@@ -12,7 +12,8 @@ const mockProperty = {
   price: 200,
   type: "Single",
   status: "For Sale",
-  area: 50000
+  area: 50000,
+  property_image: "Image URL #1"
 };
 
 describe('PropertiesService', () => {
@@ -28,7 +29,8 @@ describe('PropertiesService', () => {
       price: 200,
       type: "Single",
       status: "For Sale",
-      area: 50000
+      area: 50000,
+      property_image: "Image URL #1"
     },
     {
       title: 'Title #2',
@@ -38,7 +40,8 @@ describe('PropertiesService', () => {
       price: 201,
       type: "Family",
       status: "For Sale",
-      area: 50001
+      area: 50001,
+      property_image: "Image URL #2"
     },
     {
       title: 'Title #3',
@@ -48,7 +51,8 @@ describe('PropertiesService', () => {
       price: 202,
       type: "Villa",
       status: "For Rent",
-      area: 50002
+      area: 50002,
+      property_image: "Image URL #3"
     }
   ];
 
@@ -95,7 +99,8 @@ describe('PropertiesService', () => {
         price: 200,
         type: "Single",
         status: "For Sale",
-        area: 50000
+        area: 50000,
+        property_image: "Image URL #1"
       }),
     );
     const newProperty = await service.create({
@@ -106,7 +111,8 @@ describe('PropertiesService', () => {
       price: 200,
       type: "Single",
       status: "For Sale",
-      area: 50000
+      area: 50000,
+      property_image: "Image URL #1"
     });
     expect(newProperty).toEqual(mockProperty);
   });

@@ -1,4 +1,17 @@
-import { Body, Controller, Delete, Get, Param, Post } from '@nestjs/common';
+import { 
+  Body, 
+  Controller, 
+  Delete, 
+  Get, 
+  Param, 
+  Post,
+  UseInterceptors,
+  UploadedFile,
+  ParseFilePipe,
+  FileTypeValidator,
+  MaxFileSizeValidator 
+} from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { PropertiesService } from './properties.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { Property } from './schemas/property.schema';
@@ -10,6 +23,23 @@ export class PropertiesController {
   @Post()
   async create(@Body() createPropertyDto: CreatePropertyDto) {
     await this.propertiesService.create(createPropertyDto);
+  }
+
+  @Post(':id/upload')
+  @UseInterceptors(FileInterceptor('file'))
+  async uploadAvatar(
+    @UploadedFile(
+      new ParseFilePipe({
+        validators: [
+          new FileTypeValidator({ fileType: '.(png|jpeg|jpg)' }),
+          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 4 }),
+        ],
+      }),
+    )
+    file: Express.Multer.File,
+    @Param() params,
+  ) {
+    return this.propertiesService.uploadPropertyImage(file, params.id);
   }
 
   @Get()

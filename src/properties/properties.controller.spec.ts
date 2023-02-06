@@ -14,7 +14,8 @@ describe('Properties Controller', () => {
     price: 200,
     type: "Single",
     status: "For Sale",
-    area: 50000
+    area: 50000,
+    property_image: "Image URL #1"
   };
 
   const mockProperty = {
@@ -25,7 +26,8 @@ describe('Properties Controller', () => {
     price: 200,
     type: "Single",
     status: "For Sale",
-    area: 50000
+    area: 50000,
+    property_image: "Image URL #1"
   };
 
   beforeEach(async () => {
@@ -44,7 +46,8 @@ describe('Properties Controller', () => {
                 price: 200,
                 type: "Single",
                 status: "For Sale",
-                area: 50000
+                area: 50000,
+                property_image: "Image URL  #1"
               },
               {
                 title: 'Title #2',
@@ -54,7 +57,8 @@ describe('Properties Controller', () => {
                 price: 201,
                 type: "Family",
                 status: "For Sale",
-                area: 50001
+                area: 50001,
+                property_image: "Image URL #2"
               },
               {
                 title: 'Title #3',
@@ -64,7 +68,8 @@ describe('Properties Controller', () => {
                 price: 202,
                 type: "Villa",
                 status: "For Rent",
-                area: 50002
+                area: 50002,
+                property_image: "Image URL #3"
               }
             ]),
             create: jest.fn().mockResolvedValue(createPropertyDto),
@@ -99,7 +104,8 @@ describe('Properties Controller', () => {
           price: 200,
           type: "Single",
           status: "For Sale",
-          area: 50000
+          area: 50000,
+          property_image: "Image URL #1"
         },
         {
           title: 'Title #2',
@@ -109,7 +115,8 @@ describe('Properties Controller', () => {
           price: 201,
           type: "Family",
           status: "For Sale",
-          area: 50001
+          area: 50001,
+          property_image: "Image URL #2"
         },
         {
           title: 'Title #3',
@@ -119,7 +126,8 @@ describe('Properties Controller', () => {
           price: 202,
           type: "Villa",
           status: "For Rent",
-          area: 50002
+          area: 50002,
+          property_image: "Image URL #3"
         }
       ]);
       expect(service.findAll).toHaveBeenCalled();

@@ -28,6 +28,9 @@ export class Property {
 
   @Prop()
   area: number;
+
+  @Prop()
+  property_image: string;
 }
 
 export const PropertySchema = SchemaFactory.createForClass(Property);

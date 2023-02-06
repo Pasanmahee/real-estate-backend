@@ -7,4 +7,5 @@ export class CreatePropertyDto {
   readonly type: string;
   readonly status: string;
   readonly area: number;
+  readonly property_image: string;
 }
