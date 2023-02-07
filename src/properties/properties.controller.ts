@@ -5,6 +5,7 @@ import {
   Get, 
   Param, 
   Post,
+  Put,
   UseInterceptors,
   UploadedFile,
   ParseFilePipe,
@@ -32,7 +33,7 @@ export class PropertiesController {
       new ParseFilePipe({
         validators: [
           new FileTypeValidator({ fileType: '.(png|jpeg|jpg)' }),
-          new MaxFileSizeValidator({ maxSize: 1024 * 1024 * 4 }),
+          new MaxFileSizeValidator({ maxSize: 1024 * 1024  }),
         ],
       }),
     )
@@ -50,6 +51,11 @@ export class PropertiesController {
   @Get(':id')
   async findOne(@Param('id') id: string): Promise<Property> {
     return this.propertiesService.findOne(id);
+  }
+
+  @Put(':id')
+  async updateOne(@Param('id') id: string, @Body() createPropertyDto: CreatePropertyDto) {
+    return this.propertiesService.updateOne(id, createPropertyDto);
   }
 
   @Delete(':id')

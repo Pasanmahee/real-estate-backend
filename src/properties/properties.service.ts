@@ -54,6 +54,10 @@ export class PropertiesService {
     return this.propertyModel.findOne({ _id: id }).exec();
   }
 
+  async updateOne(id: string, data: Property): Promise<Property> {
+    return this.propertyModel.findByIdAndUpdate({ _id: id }, data).exec();
+  }
+
   async delete(id: string) {
     const deletedProperty = await this.propertyModel
       .findByIdAndRemove({ _id: id })
