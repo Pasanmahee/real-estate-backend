@@ -46,8 +46,8 @@ export class PropertiesService {
     return imageData;
   }
 
-  async findAll(): Promise<Property[]> {
-    return this.propertyModel.find().exec();
+  async findAll(query): Promise<Property[]> {
+    return this.propertyModel.find(query).exec();
   }
 
   async findOne(id: string): Promise<Property> {

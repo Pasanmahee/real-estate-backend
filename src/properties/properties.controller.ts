@@ -10,12 +10,14 @@ import {
   UploadedFile,
   ParseFilePipe,
   FileTypeValidator,
-  MaxFileSizeValidator 
+  MaxFileSizeValidator, 
+  Query
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { PropertiesService } from './properties.service';
 import { CreatePropertyDto } from './dto/create-property.dto';
 import { Property } from './schemas/property.schema';
+import { query } from 'express';
 
 @Controller('properties')
 export class PropertiesController {
@@ -44,8 +46,8 @@ export class PropertiesController {
   }
 
   @Get()
-  async findAll(): Promise<Property[]> {
-    return this.propertiesService.findAll();
+  async findAll(@Query() query): Promise<Property[]> {
+    return this.propertiesService.findAll(query);
   }
 
   @Get(':id')
